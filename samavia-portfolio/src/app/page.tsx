@@ -3,15 +3,6 @@
 import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
 import { socialLinks } from "../data/socials";
 
-const navigation = [
-  { label: "Home", href: "#home" },
-  { label: "Work", href: "#work" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
-
 const experienceData = [
   {
     title: "Software Developer",
@@ -41,7 +32,7 @@ const experienceData = [
 const achievements = [
   { value: 2, suffix: "+", label: "Years Professional Experience", detail: "Focused on modern product delivery" },
   { value: 100, suffix: "+", label: "Interns Trained", detail: "Mentorship and team support" },
-  { value: 4, suffix: "+", label: "Featured Projects", detail: "Real applications in production" },
+  { value: 12, suffix: "+", label: "Featured Projects", detail: "Applications and visual design work" },
   { value: "Full Stack", label: "Development Scope", detail: "From interface to infrastructure" },
 ];
 
@@ -97,6 +88,110 @@ const projects = [
     liveUrl: "https://gems.net.pk",
     image: "/projects/gems.webp",
     accent: "from-[#A855F7]/20 to-[#38BDF8]/10",
+  },
+  {
+    name: "Restaurant Management System",
+    title: "Restaurant Management System",
+    category: "Business Management Application",
+    description: "A complete restaurant management system with database connectivity and modules for managing restaurant operations.",
+    purpose: "To organize restaurant data and day-to-day management workflows in one system.",
+    role: "Full-stack developer",
+    features: ["Database connectivity", "Restaurant management modules", "Operational workflows"],
+    technology: ["PHP", "CSS", "HTML"],
+    liveUrl: "",
+    image: "",
+    accent: "from-[#F59E0B]/20 to-[#8B5CF6]/10",
+  },
+  {
+    name: "Skin Cancer Detection Application",
+    title: "Skin Cancer Detection Application",
+    category: "AI Healthcare Application",
+    description: "An image-based skin cancer detection application using a CNN model trained to classify seven skin lesion classes from the ISIC dataset.",
+    purpose: "To explore machine-learning-assisted classification of skin lesion images.",
+    role: "Application and machine learning developer",
+    features: ["Image-based detection", "Seven-class classification", "CNN model integration"],
+    technology: ["Java", "XML", "Python", "CNN", "ISIC Dataset"],
+    liveUrl: "",
+    image: "",
+    accent: "from-[#EC4899]/20 to-[#38BDF8]/10",
+  },
+  {
+    name: "Tasbih Counter Application",
+    title: "Digital Tasbih Counter",
+    category: "Mobile Application",
+    description: "A mobile application designed for simple and convenient digital Tasbih counting.",
+    purpose: "To provide an accessible digital alternative to a physical Tasbih counter.",
+    role: "Android application developer",
+    features: ["Digital counting", "Mobile-friendly interface", "Simple user experience"],
+    technology: ["Java", "XML"],
+    liveUrl: "",
+    image: "",
+    accent: "from-[#10B981]/20 to-[#38BDF8]/10",
+  },
+  {
+    name: "Shikayat Application",
+    title: "Complaint Management Application",
+    category: "Complaint Management System",
+    description: "A complaint management application developed to organize complaint submission and handling workflows.",
+    purpose: "To streamline the submission, tracking and management of complaints.",
+    role: "Team Leader",
+    features: ["Complaint submission", "Complaint management", "Team-led delivery"],
+    technology: ["PHP", "CSS", "Bootstrap", "HTML"],
+    liveUrl: "",
+    image: "",
+    accent: "from-[#EF4444]/20 to-[#8B5CF6]/10",
+  },
+  {
+    name: "FC-Balochistan (North)",
+    title: "FC-Balochistan (North) Project",
+    category: "Enterprise System",
+    description: "Frontend and UI/UX development for the FC-Balochistan (North) system using Oracle APEX.",
+    purpose: "To deliver a clear and usable interface for the system's operational workflows.",
+    role: "Frontend and UI/UX developer",
+    features: ["Frontend development", "UI/UX implementation", "Oracle APEX interfaces"],
+    technology: ["Oracle APEX"],
+    liveUrl: "",
+    image: "",
+    accent: "from-[#F97316]/20 to-[#38BDF8]/10",
+  },
+  {
+    name: "Zenly Chatbot",
+    title: "Zenly Chatbot",
+    category: "Conversational Application",
+    description: "A chatbot project designed to provide an interactive conversational user experience.",
+    purpose: "To support users through a simple conversational interface.",
+    role: "Chatbot developer",
+    features: ["Conversational interface", "Automated responses", "User assistance"],
+    technology: ["Chatbot Development"],
+    liveUrl: "",
+    image: "",
+    accent: "from-[#06B6D4]/20 to-[#8B5CF6]/10",
+  },
+  {
+    name: "IDEAS 2025 Creative Campaign",
+    title: "IDEAS 2025 Marketing Designs",
+    category: "Graphic and Motion Design",
+    description: "Designed promotional brochures, standees and video content for IDEAS 2025, creating a consistent visual presence across print and digital media.",
+    purpose: "To communicate the campaign clearly through cohesive and engaging event visuals.",
+    role: "Graphic and visual designer",
+    features: ["Brochure design", "Standee design", "Promotional video content"],
+    technology: ["Brochure Design", "Standee Design", "Video Design"],
+    liveUrl: "",
+    image: "",
+    accent: "from-[#EAB308]/20 to-[#8B5CF6]/10",
+  },
+  {
+    name: "Leo Laptop Brochure",
+    title: "Leo Laptop Product Brochure",
+    category: "Marketing and Print Design",
+    description: "Created a product brochure for Leo Laptop to present products and information through a clear, professional visual layout.",
+    purpose: "To support product marketing with an informative and visually consistent brochure.",
+    role: "Brochure and visual designer",
+    features: ["Product presentation", "Visual layout", "Marketing collateral"],
+    technology: ["Brochure Design", "Print Design"],
+    liveUrl: "",
+    image: "",
+    accent: "from-[#3B82F6]/20 to-[#22D3EE]/10",
   },
 ];
 
@@ -210,13 +305,10 @@ export default function Home() {
   const [spotlight, setSpotlight] = useState({ x: 0, y: 0 });
   const [isIntroComplete, setIsIntroComplete] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
   const [heroPhraseIndex, setHeroPhraseIndex] = useState(0);
   const [magneticOffset, setMagneticOffset] = useState({ x: 0, y: 0 });
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
-  const [activeProject, setActiveProject] = useState(0);
+  const [activeProject] = useState(0);
   const [projectLight, setProjectLight] = useState({ x: 50, y: 50 });
   const [imageFallbacks, setImageFallbacks] = useState<Record<string, boolean>>({});
   const [revealedCapabilities, setRevealedCapabilities] = useState<number[]>([]);
@@ -258,32 +350,6 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const updateScrollState = () => {
-      const nextScrolled = window.scrollY > 20;
-      setIsScrolled(nextScrolled);
-
-      const sectionIds = ["home", "about", "experience", "work", "skills", "contact"];
-      const offset = window.scrollY + 180;
-      let current = "home";
-
-      for (let index = sectionIds.length - 1; index >= 0; index -= 1) {
-        const sectionId = sectionIds[index];
-        const section = document.getElementById(sectionId);
-        if (section && offset >= section.offsetTop) {
-          current = sectionId;
-          break;
-        }
-      }
-
-      setActiveSection(current);
-    };
-
-    updateScrollState();
-    window.addEventListener("scroll", updateScrollState, { passive: true });
-    return () => window.removeEventListener("scroll", updateScrollState);
-  }, []);
-
-  useEffect(() => {
     const capabilityNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-capability-card]"));
     const observer = new IntersectionObserver(
       (entries) => {
@@ -302,24 +368,6 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const section = document.getElementById("work");
-    if (!section) return undefined;
-
-    const handleScroll = () => {
-      const rect = section.getBoundingClientRect();
-      const sectionTop = rect.top + window.scrollY;
-      const sectionHeight = rect.height;
-      const position = Math.min(1, Math.max(0, (window.scrollY + window.innerHeight * 0.2 - sectionTop) / (sectionHeight - window.innerHeight * 0.6)));
-      const nextProject = Math.min(projects.length - 1, Math.max(0, Math.floor(position * projects.length)));
-      setActiveProject(nextProject);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
     const section = document.getElementById("experience");
     if (!section) return undefined;
 
@@ -334,30 +382,6 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    if (!isMenuOpen) {
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-      return undefined;
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-    };
-  }, [isMenuOpen]);
 
   useEffect(() => {
     const experienceNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-experience-card]"));
@@ -417,60 +441,7 @@ export default function Home() {
       ) : null}
 
       <div className={`transition-opacity duration-700 ${isIntroComplete ? "opacity-100" : "opacity-0"}`}>
-        <header className={`fixed left-1/2 top-4 z-40 w-[calc(100%-1.5rem)] max-w-6xl -translate-x-1/2 rounded-full border border-white/10 bg-[#050816]/60 px-3 py-3 shadow-[0_16px_60px_rgba(0,0,0,0.24)] backdrop-blur-2xl transition-all duration-300 sm:px-4 ${isScrolled ? "top-2 scale-[0.98]" : "top-4 scale-100"}`}>
-          <nav className="flex items-center justify-between gap-3">
-            <a href="#home" className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.28em] text-[#F8FAFC]">
-              <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-[#8B5CF6]/35 bg-[#0D1424] text-lg text-[#8B5CF6] shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">SR.</span>
-            </a>
-            <div className="hidden items-center gap-6 text-sm text-[#94A3B8] lg:flex">
-              {navigation.map((item) => {
-                const isActive = activeSection === item.href.replace("#", "");
-                return (
-                  <a key={item.label} href={item.href} className={`transition ${isActive ? "text-[#F8FAFC]" : "hover:text-[#F8FAFC]"}`}>
-                    <span className={`relative ${isActive ? "font-semibold" : ""}`}>
-                      {item.label}
-                      {isActive ? <span className="absolute -bottom-2 left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#38BDF8]" /> : null}
-                    </span>
-                  </a>
-                );
-              })}
-            </div>
-            <div className="flex items-center gap-2">
-              {/* Place the CV PDF in public/Samavia-Rasool-CV.pdf */}
-              <a href="/Samavia-Rasool-CV.pdf" className="hidden rounded-full border border-[#8B5CF6]/35 bg-[#0D1424] px-4 py-2 text-sm font-medium text-[#F8FAFC] shadow-[0_0_0_1px_rgba(255,255,255,0.03)] transition hover:border-[#38BDF8]/60 hover:text-[#38BDF8] sm:inline-flex">Resume</a>
-              <button type="button" aria-label="Toggle navigation" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen((open) => !open)} className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#F8FAFC] lg:hidden">
-                <span className="flex flex-col gap-1.5">
-                  <span className={`h-0.5 w-5 rounded-full bg-current transition ${isMenuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
-                  <span className={`h-0.5 w-5 rounded-full bg-current transition ${isMenuOpen ? "opacity-0" : ""}`} />
-                  <span className={`h-0.5 w-5 rounded-full bg-current transition ${isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
-                </span>
-              </button>
-            </div>
-          </nav>
-        </header>
-
-        {isMenuOpen ? (
-          <div className="fixed inset-0 z-30 bg-[#050816]/90 backdrop-blur-xl lg:hidden">
-            <div className="mx-auto flex h-full max-w-sm flex-col justify-center px-6">
-              <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(17,26,46,0.98),rgba(13,20,36,0.95))] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm uppercase tracking-[0.3em] text-[#22D3EE]">Navigate</span>
-                  <button type="button" onClick={() => setIsMenuOpen(false)} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-[#F8FAFC]">Close</button>
-                </div>
-                <div className="mt-6 flex flex-col gap-3">
-                  {navigation.map((item) => (
-                    <a key={item.label} href={item.href} onClick={() => setIsMenuOpen(false)} className={`rounded-2xl border px-4 py-3 text-sm font-medium transition ${activeSection === item.href.replace("#", "") ? "border-[#8B5CF6]/40 bg-[#8B5CF6]/10 text-[#F8FAFC]" : "border-white/10 bg-white/5 text-[#CBD5E1] hover:text-[#F8FAFC]"}`}>
-                      {item.label}
-                    </a>
-                  ))}
-                </div>
-                <a href="/Samavia-Rasool-CV.pdf" onClick={() => setIsMenuOpen(false)} className="mt-6 inline-flex rounded-full border border-[#8B5CF6]/35 bg-[#0D1424] px-4 py-3 text-sm font-medium text-[#F8FAFC]">Open Resume</a>
-              </div>
-            </div>
-          </div>
-        ) : null}
-
-        <section id="home" className="relative mx-auto flex min-h-screen max-w-[1280px] flex-col justify-center px-6 pb-24 pt-36 sm:px-8 lg:px-10 lg:pt-40">
+        <section id="home" className="relative mx-auto flex min-h-screen max-w-[1280px] flex-col justify-start px-6 pb-24 pt-8 sm:px-8 sm:pt-10 lg:px-10 lg:pt-12">
           <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
             <div className="max-w-3xl">
               <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#38BDF8]/20 bg-[#38BDF8]/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.3em] text-[#7DD3FC]">
@@ -488,47 +459,27 @@ export default function Home() {
               <div className="mt-8 flex flex-wrap gap-4 opacity-0 animate-[fadeUp_1s_ease-out_forwards]">
                 <a href="#work" onMouseMove={handleMagneticMove} onMouseLeave={handleMagneticLeave} style={{ transform: `translate(${magneticOffset.x}px, ${magneticOffset.y}px)` }} className="rounded-full bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#38BDF8] px-5 py-3 text-sm font-semibold text-white shadow-[0_16px_45px_rgba(139,92,246,0.22)] transition duration-200 hover:-translate-y-1">Explore My Work</a>
                 <a href="#contact" onMouseMove={handleMagneticMove} onMouseLeave={handleMagneticLeave} style={{ transform: `translate(${magneticOffset.x}px, ${magneticOffset.y}px)` }} className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-[#F8FAFC] transition duration-200 hover:-translate-y-1 hover:border-[#38BDF8]/40 hover:text-[#7DD3FC]">Let’s Talk</a>
-              </div>
-              <div className="mt-8 flex flex-wrap gap-3 opacity-0 animate-[fadeUp_1.1s_ease-out_forwards]">
                 {socialLinks.map((link) => (
-                  <a key={link.label} href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noreferrer" : undefined} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-[#CBD5E1] transition hover:border-[#8B5CF6]/50 hover:text-[#F8FAFC]">
-                    {link.label}
+                  <a key={link.label} href={link.label === "Email" ? "/Samavia%20Rasool(Full%20Stack%20Developer).pdf" : link.href} target={link.label === "Email" || link.external ? "_blank" : undefined} rel={link.label === "Email" || link.external ? "noreferrer" : undefined} className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-[#CBD5E1] transition hover:border-[#8B5CF6]/50 hover:text-[#F8FAFC]">
+                    {link.label === "Email" ? "Resume" : link.label}
                   </a>
                 ))}
               </div>
             </div>
 
-            <div className="relative mx-auto w-full max-w-xl" onMouseMove={handleParallaxMove} onMouseLeave={() => setParallax({ x: 0, y: 0 })}>
-              <div className="absolute -left-4 top-8 rounded-full border border-[#8B5CF6]/25 bg-[#0D1424]/90 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#C4B5FD] shadow-[0_10px_30px_rgba(0,0,0,0.22)]">React</div>
-              <div className="absolute -right-2 top-12 rounded-full border border-[#38BDF8]/25 bg-[#0D1424]/90 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#7DD3FC] shadow-[0_10px_30px_rgba(0,0,0,0.22)]">Node.js</div>
-              <div className="absolute bottom-16 left-0 rounded-full border border-white/10 bg-[#0D1424]/90 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#CBD5E1] shadow-[0_10px_30px_rgba(0,0,0,0.22)]">MySQL</div>
-              <div className="absolute bottom-6 right-4 rounded-full border border-[#8B5CF6]/25 bg-[#0D1424]/90 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#C4B5FD] shadow-[0_10px_30px_rgba(0,0,0,0.22)]">Next.js</div>
-
-              <div className="rounded-[2rem] border border-white/10 bg-[#111A2E]/90 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-6" style={{ transform: `translate(${parallax.x}px, ${parallax.y}px)` }}>
-                <div className="mb-4 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="h-3 w-3 rounded-full bg-[#F87171]" />
-                    <span className="h-3 w-3 rounded-full bg-[#FBBF24]" />
-                    <span className="h-3 w-3 rounded-full bg-[#34D399]" />
-                  </div>
-                  <div className="rounded-full border border-[#8B5CF6]/30 bg-[#8B5CF6]/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.25em] text-[#C4B5FD]">Full Stack</div>
-                </div>
-                <div className="mb-4 flex items-center gap-2 rounded-2xl border border-[#38BDF8]/20 bg-[#38BDF8]/10 px-3 py-2 text-sm text-[#7DD3FC]">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-[#38BDF8]" /> Deployment status: online • DNS & SSL ready
-                </div>
-                <pre className="overflow-x-auto rounded-2xl border border-white/10 bg-[#050816] p-5 text-sm leading-7 text-[#E2E8F0]">{`const developer = {
-  name: "Samavia Rasool",
-  role: "Full Stack Developer",
-  frontend: ["React", "Next.js", "TypeScript"],
-  backend: ["Node.js", "REST APIs", "PHP"],
-  database: ["MySQL", "Oracle"],
-  expertise: ["Deployment", "DNS", "SSL", "Leadership"]
-};`}</pre>
-                <div className="mt-4 flex items-center justify-between text-sm text-[#94A3B8]">
-                  <span>Live delivery pipeline</span>
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[#CBD5E1]">Available now</span>
-                </div>
+            <div className="relative mx-auto aspect-square w-full max-w-[520px]" onMouseMove={handleParallaxMove} onMouseLeave={() => setParallax({ x: 0, y: 0 })}>
+              <div className="hero-orbit absolute inset-[7%] rounded-full border border-white/10" />
+              <div className="hero-orbit-reverse absolute inset-[18%] rounded-full border border-dashed border-[#8B5CF6]/30" />
+              <div className="absolute inset-[29%] rounded-full bg-[#8B5CF6]/20 blur-3xl" />
+              <div className="hero-core absolute left-1/2 top-1/2 flex h-[46%] w-[46%] items-center justify-center rounded-full border border-white/15 bg-[linear-gradient(145deg,rgba(139,92,246,0.45),rgba(13,20,36,0.96)_60%,rgba(56,189,248,0.3))] shadow-[0_30px_100px_rgba(139,92,246,0.28)] backdrop-blur-xl" style={{ transform: `translate(calc(-50% + ${parallax.x}px), calc(-50% + ${parallax.y}px))` }}>
+                <div className="hero-core-content text-center"><span className="block text-6xl font-semibold tracking-[-0.08em] text-white sm:text-7xl">SR</span><span className="mt-3 block text-[10px] uppercase tracking-[0.35em] text-[#C4B5FD]">Design · Develop</span></div>
               </div>
+              <div className="hero-float absolute left-[3%] top-[18%] rounded-2xl border border-white/10 bg-[#0D1424]/90 px-4 py-3 shadow-xl backdrop-blur"><span className="block text-lg font-semibold text-white">02+</span><span className="text-xs text-[#94A3B8]">Years building</span></div>
+              <div className="hero-float-delayed absolute right-0 top-[24%] rounded-2xl border border-[#38BDF8]/20 bg-[#0D1424]/90 px-4 py-3 shadow-xl backdrop-blur"><span className="text-sm font-semibold text-[#7DD3FC]">React · Next.js</span></div>
+              <div className="hero-float-delayed absolute bottom-[16%] left-[4%] rounded-2xl border border-[#8B5CF6]/20 bg-[#0D1424]/90 px-4 py-3 shadow-xl backdrop-blur"><span className="text-sm font-semibold text-[#C4B5FD]">Node · MySQL</span></div>
+              <div className="hero-float absolute bottom-[8%] right-[7%] rounded-2xl border border-white/10 bg-[#0D1424]/90 px-4 py-3 shadow-xl backdrop-blur"><span className="block text-lg font-semibold text-white">100+</span><span className="text-xs text-[#94A3B8]">People mentored</span></div>
+              <span className="hero-node absolute left-[17%] top-[8%] h-3 w-3 rounded-full bg-[#8B5CF6] shadow-[0_0_20px_#8B5CF6]" />
+              <span className="hero-node-delayed absolute bottom-[28%] right-[4%] h-2.5 w-2.5 rounded-full bg-[#38BDF8] shadow-[0_0_20px_#38BDF8]" />
             </div>
           </div>
         </section>
@@ -544,11 +495,32 @@ export default function Home() {
         <section id="work" className="mx-auto max-w-[1280px] px-6 py-24 sm:px-8 lg:px-10 lg:py-32">
           <div className="mb-8 max-w-3xl">
             <p className="text-sm uppercase tracking-[0.3em] text-[#22D3EE]">Selected Work</p>
-            <h2 className="mt-3 text-3xl font-semibold text-[#F8FAFC]" style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}>Digital products built for real users.</h2>
-            <p className="mt-4 text-lg leading-8 text-[#94A3B8]">A selection of full-stack platforms, management systems and production applications I have helped design and develop.</p>
+            <h2 className="mt-3 text-3xl font-semibold text-[#F8FAFC]" style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}>Digital products and visual experiences.</h2>
+            <p className="mt-4 text-lg leading-8 text-[#94A3B8]">A selection of full-stack applications, management systems, graphic design and promotional media I have designed and developed.</p>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="grid gap-5 md:grid-cols-2">
+            {projects.map((project, index) => (
+              <article key={project.name} className="group rounded-[1.8rem] border border-white/10 bg-[linear-gradient(135deg,rgba(17,26,46,0.96),rgba(13,20,36,0.92))] p-6 shadow-[0_16px_55px_rgba(0,0,0,0.2)] transition duration-300 hover:-translate-y-1 hover:border-[#8B5CF6]/35">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-medium uppercase tracking-[0.25em] text-[#22D3EE]">Project {String(index + 1).padStart(2, "0")}</p>
+                    <h3 className="mt-3 text-2xl font-semibold text-[#F8FAFC]">{project.name}</h3>
+                  </div>
+                  {project.liveUrl ? <a href={project.liveUrl} target="_blank" rel="noreferrer" aria-label={`Visit ${project.name}`} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#F8FAFC] transition group-hover:border-[#38BDF8]/40 group-hover:text-[#38BDF8]">↗</a> : null}
+                </div>
+                <p className="mt-5 text-sm leading-7 text-[#94A3B8]">{project.description}</p>
+                <div className="mt-6 border-t border-white/10 pt-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#C4B5FD]">Technical Stack</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {project.technology.map((technology) => <span key={technology} className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#CBD5E1]">{technology}</span>)}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="hidden">
             <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(17,26,46,0.96),rgba(13,20,36,0.92))] p-6 shadow-[0_18px_70px_rgba(0,0,0,0.22)] lg:sticky lg:top-28">
               <div className="flex items-center justify-between">
                 <div>
@@ -696,12 +668,27 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="mx-auto max-w-[1280px] px-6 py-24 sm:px-8 lg:px-10 lg:py-32">
+        <section id="about" className="mx-auto max-w-[1280px] px-6 py-12 sm:px-8 lg:px-10 lg:py-16">
           <div className="grid gap-6 rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(17,26,46,0.96),rgba(13,20,36,0.92))] p-8 shadow-[0_20px_70px_rgba(0,0,0,0.25)] lg:grid-cols-[0.9fr_1.1fr]">
             <div className="flex items-center justify-center">
-              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 p-2 shadow-[0_18px_60px_rgba(0,0,0,0.25)]">
+              <div className="relative w-full max-w-sm overflow-hidden rounded-[2rem] border border-white/10 p-2 shadow-[0_18px_60px_rgba(0,0,0,0.25)]">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(139,92,246,0.25),_transparent_45%),radial-gradient(circle_at_bottom_right,_rgba(56,189,248,0.2),_transparent_45%)]" />
-                <div className="h-72 w-full min-w-[260px] rounded-[1.5rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))]" />
+                <div className="relative flex min-h-80 flex-col justify-between rounded-[1.5rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] p-6 backdrop-blur-sm">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-medium uppercase tracking-[0.28em] text-[#7DD3FC]">Developer + Designer</span>
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#34D399] shadow-[0_0_16px_#34D399]" />
+                  </div>
+                  <div className="py-8 text-center">
+                    <div className="mx-auto flex h-32 w-32 items-center justify-center rounded-full border border-white/15 bg-[linear-gradient(145deg,rgba(139,92,246,0.5),rgba(56,189,248,0.18))] shadow-[0_20px_55px_rgba(139,92,246,0.25)]">
+                      <span className="text-5xl font-semibold tracking-[-0.08em] text-white">SR</span>
+                    </div>
+                    <h3 className="mt-5 text-xl font-semibold text-[#F8FAFC]">Samavia Rasool</h3>
+                    <p className="mt-2 text-sm text-[#94A3B8]">Building systems and shaping visual stories.</p>
+                  </div>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {["Full Stack", "UI/UX", "Graphic Design", "Video"].map((skill) => <span key={skill} className="rounded-full border border-white/10 bg-[#050816]/50 px-3 py-1.5 text-xs text-[#CBD5E1]">{skill}</span>)}
+                  </div>
+                </div>
               </div>
             </div>
             <div>
@@ -725,7 +712,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="mx-auto max-w-[1280px] px-6 py-24 sm:px-8 lg:px-10 lg:py-32">
+        <section id="contact" className="mx-auto max-w-[1280px] px-6 py-12 sm:px-8 lg:px-10 lg:py-16">
           <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(139,92,246,0.18),rgba(34,211,238,0.1))] p-8 shadow-[0_18px_70px_rgba(0,0,0,0.22)]">
             <p className="text-sm uppercase tracking-[0.3em] text-[#22D3EE]">Contact</p>
             <h2 className="mt-3 text-3xl font-semibold text-[#F8FAFC]" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Let’s build something reliable and ambitious.</h2>
@@ -737,7 +724,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1280px] px-6 py-24 sm:px-8 lg:px-10 lg:py-32">
+        <section className="mx-auto max-w-[1280px] px-6 py-12 sm:px-8 lg:px-10 lg:py-16">
           <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(17,26,46,0.96),rgba(13,20,36,0.92))] p-8 shadow-[0_20px_70px_rgba(0,0,0,0.25)]">
             <p className="text-sm uppercase tracking-[0.3em] text-[#22D3EE]">Development Process</p>
             <h2 className="mt-3 text-3xl font-semibold text-[#F8FAFC]" style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}>Disciplined execution from idea to launch.</h2>
