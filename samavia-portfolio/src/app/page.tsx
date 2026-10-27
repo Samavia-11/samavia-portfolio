@@ -451,7 +451,7 @@ export default function Home() {
                 Hi, I’m <span className="text-[#8B5CF6]">Samavia Rasool.</span>
               </h1>
               <h2 className="mt-3 text-2xl font-semibold text-[#F8FAFC] opacity-0 animate-[fadeUp_0.8s_ease-out_forwards] sm:text-3xl" style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}>
-                I build <span className="bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#38BDF8] bg-clip-text text-transparent">{heroPhrases[heroPhraseIndex]}</span>.
+                I Build <span className="bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#38BDF8] bg-clip-text text-transparent">{heroPhrases[heroPhraseIndex]}</span>.
               </h2>
               <p className="mt-4 text-lg leading-8 text-[#94A3B8] opacity-0 animate-[fadeUp_0.9s_ease-out_forwards]">
                 Full Stack Software Developer specializing in React.js, Next.js, Node.js and MySQL. I create responsive interfaces, backend systems, database-driven applications and reliable production deployments.
