@@ -7,7 +7,7 @@ const experienceData = [
   {
     title: "Software Developer",
     company: "Inotech Solutions",
-    period: "October 2024 – Present",
+    period: "October 2024 – October 2026",
     bullets: [
       "Developed and maintained scalable applications using Next.js, React.js, Node.js and MySQL",
       "Led and trained more than 100 interns",
